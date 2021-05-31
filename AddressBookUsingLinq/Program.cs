@@ -61,6 +61,12 @@ namespace AddressBookUsingLinq
             PrimaryKeyColumns[0] = addressBookTable.Columns["firstName"];
             PrimaryKeyColumns[1] = addressBookTable.Columns["phoneNumber"];
             addressBookTable.PrimaryKey = PrimaryKeyColumns;
+
+            addressBookTable.Rows.Add("Kim", "Kardashian", "Street 1", "Lakers", "Los Angeles", 444556, 6785674567, "lb@gmail.com");
+            addressBookTable.Rows.Add("Kylie", "Jenner", "Street 3", "Celtics", "Boston", 345267, 2345678987, "kylie@gmail.com");
+            addressBookTable.Rows.Add("Kris", "Jenner", "Block 4", "Warriors", "Golden State", 987654, 3456787654, "kris@gmail.com");
+            addressBookTable.Rows.Add("Khloe", "Lamar", "Street 5", "Rockets", "Houston", 234566, 6543456789, "khloe@gmail.com");
+            addressBookTable.Rows.Add("Kourtney", "Scott", "Block 2", "Hornets ", "Charlotte ", 444556, 3456787654, "ks@gmail.com");
         }
     }
 }
