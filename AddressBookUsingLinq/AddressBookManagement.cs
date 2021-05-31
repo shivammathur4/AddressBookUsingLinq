@@ -10,10 +10,11 @@ namespace AddressBookUsingLinq
     public class AddressBookManagement
     {
 
-        public DataTable DeletingContactFromTable(DataTable datatable)
+        public void RetrievingContactDetailsByStateOrCity(DataTable dataTable)
         {
-            DataTable dataTableupdated = datatable.AsEnumerable().Except(datatable.AsEnumerable().Where(r => r.Field<string>("firstName") == "Khloe" && r.Field<string>("lastName") == "Lamar")).CopyToDataTable();
-            foreach (var data in dataTableupdated.AsEnumerable())
+            var recordData = dataTable.AsEnumerable().Where(r => r.Field<string>("city") == "Celtics");
+            var recordDataState = dataTable.AsEnumerable().Where(r => r.Field<string>("state") == "Charlotte");
+            foreach (var data in recordDataState)
             {
                 Console.WriteLine("FirstName:- " + data.Field<string>("firstName"));
                 Console.WriteLine("lastName:- " + data.Field<string>("lastName"));
@@ -25,7 +26,6 @@ namespace AddressBookUsingLinq
                 Console.WriteLine("eMail:- " + data.Field<string>("eMail"));
                 Console.WriteLine("***************");
             }
-            return dataTableupdated;
         }
     }
 }

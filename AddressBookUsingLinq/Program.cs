@@ -69,7 +69,7 @@ namespace AddressBookUsingLinq
             addressBookTable.Rows.Add("Kourtney", "Scott", "Block 2", "Hornets ", "Charlotte ", 444556, 3456787654, "ks@gmail.com");
 
             AddressBookManagement addressBookManagement = new AddressBookManagement();
-            addressBookTable = addressBookManagement.DeletingContactFromTable(addressBookTable);
+            addressBookManagement.RetrievingContactDetailsByStateOrCity(addressBookTable);
 
         }
     }
