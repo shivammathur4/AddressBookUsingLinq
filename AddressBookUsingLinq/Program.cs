@@ -67,6 +67,25 @@ namespace AddressBookUsingLinq
             addressBookTable.Rows.Add("Kris", "Jenner", "Block 4", "Warriors", "Golden State", 987654, 3456787654, "kris@gmail.com");
             addressBookTable.Rows.Add("Khloe", "Lamar", "Street 5", "Rockets", "Houston", 234566, 6543456789, "khloe@gmail.com");
             addressBookTable.Rows.Add("Kourtney", "Scott", "Block 2", "Hornets ", "Charlotte ", 444556, 3456787654, "ks@gmail.com");
+
+            AddressBookManagement addressBookManagement = new AddressBookManagement();
+            addressBookTable = addressBookManagement.UpdatedContactDetails(addressBookTable);
+
+
+            Console.WriteLine("*******************DATA*****************");
+            foreach (var data in addressBookTable.AsEnumerable())
+            {
+                Console.WriteLine("FirstName:- " + data.Field<string>("firstName"));
+                Console.WriteLine("lastName:- " + data.Field<string>("lastName"));
+                Console.WriteLine("Address:- " + data.Field<string>("address"));
+                Console.WriteLine("City:- " + data.Field<string>("city"));
+                Console.WriteLine("State:- " + data.Field<string>("state"));
+                Console.WriteLine("zip:- " + Convert.ToInt32(data.Field<int>("zip")));
+                Console.WriteLine("phoneNumber:- " + Convert.ToDouble(data.Field<Double>("phoneNumber")));
+                Console.WriteLine("eMail:- " + data.Field<string>("eMail"));
+                Console.WriteLine("***************");
+            }
+
         }
     }
 }
