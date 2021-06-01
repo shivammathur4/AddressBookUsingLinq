@@ -57,6 +57,16 @@ namespace AddressBookUsingLinq
             column.ColumnName = "eMail";
             addressBookTable.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "addressBookName";
+            addressBookTable.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "type";
+            addressBookTable.Columns.Add(column);
+
             DataColumn[] PrimaryKeyColumns = new DataColumn[2];
             PrimaryKeyColumns[0] = addressBookTable.Columns["firstName"];
             PrimaryKeyColumns[1] = addressBookTable.Columns["phoneNumber"];
@@ -69,8 +79,7 @@ namespace AddressBookUsingLinq
             addressBookTable.Rows.Add("Kourtney", "Scott", "Block 2", "Hornets ", "Charlotte ", 444556, 3456787654, "ks@gmail.com");
 
             AddressBookManagement addressBookManagement = new AddressBookManagement();
-            addressBookManagement.GetSortedDataBasedOnPersonName(addressBookTable);
-
+            addressBookManagement.GetCountByType(addressBookTable);
         }
     }
 }
