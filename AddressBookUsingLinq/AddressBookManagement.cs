@@ -10,11 +10,10 @@ namespace AddressBookUsingLinq
     public class AddressBookManagement
     {
 
-        public void RetrievingContactDetailsByStateOrCity(DataTable dataTable)
+        public void GetSortedDataBasedOnPersonName(DataTable datatable)
         {
-            var recordData = dataTable.AsEnumerable().Where(r => r.Field<string>("city") == "Celtics");
-            var recordDataState = dataTable.AsEnumerable().Where(r => r.Field<string>("state") == "Charlotte");
-            foreach (var data in recordDataState)
+            var recordData = datatable.AsEnumerable().Where(r => r.Field<string>("city") == "Lakers").OrderBy(r => r.Field<string>("firstName")).ThenBy(r => r.Field<string>("lastName"));
+            foreach (var data in recordData)
             {
                 Console.WriteLine("FirstName:- " + data.Field<string>("firstName"));
                 Console.WriteLine("lastName:- " + data.Field<string>("lastName"));
@@ -25,24 +24,6 @@ namespace AddressBookUsingLinq
                 Console.WriteLine("phoneNumber:- " + Convert.ToDouble(data.Field<Double>("phoneNumber")));
                 Console.WriteLine("eMail:- " + data.Field<string>("eMail"));
                 Console.WriteLine("***************");
-            }
-        }
-
-
-
-        public void GetCountByCityAndState(DataTable datatable)
-        {
-            var recordData = datatable.AsEnumerable().Where(r => r.Field<string>("city") == "Lakers" && r.Field<string>("state") == "Los Angeles").Count();
-            var recordedData = from data in datatable.AsEnumerable()
-                               group data by new { city = data.Field<string>("city"), state = data.Field<string>("state") } into g
-                               select new { city = g.Key, count = g.Count() };
-            Console.WriteLine(recordData);
-            foreach (var data in recordedData.AsEnumerable())
-            {
-                Console.WriteLine("city:- " + data.city.city);
-                Console.WriteLine("state:- " + data.city.state);
-                Console.WriteLine("lastName:- " + data.count);
-                Console.WriteLine("*******************");
             }
         }
     }
