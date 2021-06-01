@@ -70,7 +70,8 @@ namespace AddressBookUsingLinq
 
             AddressBookManagement addressBookManagement = new AddressBookManagement();
             //addressBookManagement.RetrievingContactDetailsByStateOrCity(addressBookTable);
-            addressBookManagement.RetrievingContactDetailsByStateOrCity(addressBookTable);
+            //addressBookManagement.RetrievingContactDetailsByStateOrCity(addressBookTable);
+            addressBookManagement.GetCountByCityAndState(addressBookTable);
 
         }
     }
