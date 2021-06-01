@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace AddressBookUsingLinq
 {
-    public class AddressBookManagement
+    class AddressBookManagement
     {
-
-        public void RetrievingContactDetailsByStateOrCity(DataTable dataTable)
+        
+        public DataTable DeletingContactFromTable(DataTable datatable)
         {
-            var recordData = dataTable.AsEnumerable().Where(r => r.Field<string>("city") == "Celtics");
-            var recordDataState = dataTable.AsEnumerable().Where(r => r.Field<string>("state") == "Charlotte");
-            foreach (var data in recordDataState)
+            
+            DataTable dataTableupdated = datatable.AsEnumerable().Except(datatable.AsEnumerable().Where(r => r.Field<string>("firstName") == "Khloe" && r.Field<string>("lastName") == "Lamar")).CopyToDataTable();
+            foreach (var data in dataTableupdated.AsEnumerable())
             {
                 Console.WriteLine("FirstName:- " + data.Field<string>("firstName"));
                 Console.WriteLine("lastName:- " + data.Field<string>("lastName"));
@@ -26,6 +26,7 @@ namespace AddressBookUsingLinq
                 Console.WriteLine("eMail:- " + data.Field<string>("eMail"));
                 Console.WriteLine("***************");
             }
+            return dataTableupdated;
         }
     }
 }
